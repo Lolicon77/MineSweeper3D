@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using L7;
 
 namespace Game {
-	public class Player : Singleton<Player> {
+	public class Player : SingletonForMonoInstantiateOnAwake<Player> {
 
 		private bool isAlive;
 

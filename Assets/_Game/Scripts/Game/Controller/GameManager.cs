@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using L7;
 
 namespace Game {
-	public class GameManager : Singleton<GameManager> {
+	public class GameManager : SingletonForMonoInstantiateOnAwake<GameManager> {
 
 		public int row;
 		public int line;

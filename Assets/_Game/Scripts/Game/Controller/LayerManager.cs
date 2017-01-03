@@ -4,7 +4,7 @@ using L7;
 
 namespace Game
 {
-	public class LayerManager : BaseLayerManager<LayerManager>
+	public class LayerManager : SingletonForMonoInstantiateOnAwake<LayerManager>
 	{
 
 		public LayerMask player;
