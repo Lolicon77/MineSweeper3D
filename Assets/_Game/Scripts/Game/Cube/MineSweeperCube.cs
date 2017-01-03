@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 namespace Game {
@@ -21,7 +21,7 @@ namespace Game {
 
 		void OnCollisionEnter(Collision other) {
 			//层检测
-			if (1 << other.gameObject.layer == LayerManager.Ins.player) {
+			if (1 << other.gameObject.layer == LayerManager.Instance.player) {
 				if (haveLandMine) {
 					Boom();
 				} else {
@@ -31,10 +31,9 @@ namespace Game {
 		}
 
 		void Boom() {
-			var boomEffect = Instantiate(GameManager.Ins.boomEffect);
+			var boomEffect = Instantiate(GameManager.Instance.boomEffect);
 			boomEffect.transform.position = transform.position;
-			Player.Ins.GetComponent<Rigidbody>().AddExplosionForce(200,transform.position,10);
-			Player.Ins.Die();
+			Player.Instance.GetComponent<Rigidbody>().AddExplosionForce(200,transform.position,10);
 		}
 
 		void ShowNumber() {
@@ -45,7 +44,7 @@ namespace Game {
 			int number = 0;
 			for (int i = rowIndex - 1; i < rowIndex + 2; i++) {
 				for (int j = lineIndex - 1; j < lineIndex + 2; j++) {
-					if (GameManager.Ins.GetCube(i, j) && GameManager.Ins.GetCube(i, j).haveLandMine) {
+					if (GameManager.Instance.GetCube(i, j) && GameManager.Instance.GetCube(i, j).haveLandMine) {
 						number++;
 					}
 				}
