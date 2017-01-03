@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 namespace Game {
@@ -34,7 +34,6 @@ namespace Game {
 			var boomEffect = Instantiate(GameManager.Instance.boomEffect);
 			boomEffect.transform.position = transform.position;
 			Player.Instance.GetComponent<Rigidbody>().AddExplosionForce(200,transform.position,10);
-			Player.Instance.Die();
 		}
 
 		void ShowNumber() {
