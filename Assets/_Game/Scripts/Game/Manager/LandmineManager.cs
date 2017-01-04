@@ -32,7 +32,7 @@ namespace Game {
 			}
 		}
 
-		public int GetLinemineAroundCount(Landmine landmine) {
+		public int GetLandmineAroundCount(Landmine landmine) {
 			int number = 0;
 			for (int i = 0; i < currentLandmineList.Count; i++) {
 				var other = currentLandmineList[i];

@@ -5,7 +5,7 @@ using L7;
 namespace Game {
 	public class Player : SingletonForMonoInstantiateOnAwake<Player> {
 
-		private bool isAlive;
+		private bool isAlive = true;
 		private bool isGrounded;
 		private bool isGroundedLastFrame;
 

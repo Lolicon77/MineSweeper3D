@@ -7,7 +7,7 @@ namespace Game {
 		public int column;
 
 		public override string ToString() {
-			return "row: " + row + ",column:" + column;
+			return "( " + row + "," + column + ")";
 		}
 	}
 }
