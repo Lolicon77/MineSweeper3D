@@ -11,23 +11,35 @@ namespace Game {
 
 		private float minHeight = 0.05f;
 
+		private float positionX;
+		private float positionZ;
+
 		void Update() {
 			if (!isAlive) {
 				return;
 			}
 			isGrounded = transform.position.y < minHeight;
 			if (isGrounded) {
-				Check();
+				CheckLandmine();
 			}
 		}
 
-		private void Check() {
+		void CheckLandmine() {
 			if (LandmineManager.Instance.ExistLandmine(transform.position.x, transform.position.z)) {
 				Debug.LogError("Die");
 				isAlive = false;
 			}
 		}
 
+		void CheckPosition() {
+			if (transform.position.x == positionX && transform.position.z == positionZ) {
+
+			}
+		}
+
+		void OnMoveToOtherSquare() {
+
+		}
 
 	}
 }

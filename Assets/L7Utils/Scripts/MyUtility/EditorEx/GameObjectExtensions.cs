@@ -24,6 +24,13 @@ namespace UnityEngine {
 			return obj2;
 		}
 
+		public static T GetOrAddComponent<T>(this GameObject gObj) where T : Component {
+			T t = gObj.GetComponent<T>();
+			if (t == null) {
+				t = gObj.AddComponent<T>();
+			}
+			return t;
+		}
 
 		/// <summary>
 		/// 设置层级
@@ -45,27 +52,20 @@ namespace UnityEngine {
 		// Fields
 		private object value;
 
-
 		// Methods
 		public DefaultParameterValueAttribute(object value) {
 			this.value = value;
 		}
 
-
 		// Properties
-		public object Value {
-			get {
+		public object Value
+		{
+			get
+			{
 				return this.value;
 			}
 		}
 	}
-
-
-
-
-
-
-
 
 }
 

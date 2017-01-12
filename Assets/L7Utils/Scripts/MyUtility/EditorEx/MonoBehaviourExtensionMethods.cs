@@ -4,9 +4,7 @@
 namespace UnityEngine {
 	public static class MonoBehaviourExtensionMethods {
 
-
 		public delegate void Task();
-
 
 		//	public delegate IEnumerator Continue(Object t = null);
 
@@ -47,15 +45,9 @@ namespace UnityEngine {
 		//		mono.StopCoroutine(con.Method.Name);
 		//	}
 
-
-
-
 		//	public static void Log(this MonoBehaviour mono, string text) {
 		//		Debug.Log(mono.gameObject.name +"   " + text);
 		//	}
-
-
-
 
 	}
 }
