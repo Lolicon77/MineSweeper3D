@@ -32,11 +32,11 @@ namespace Game {
 			}
 		}
 
-		public int GetLandmineAroundCount(Landmine landmine) {
+		public int GetLandmineAroundCount() {
 			int number = 0;
 			for (int i = 0; i < currentLandmineList.Count; i++) {
 				var other = currentLandmineList[i];
-				if (Mathf.Abs(landmine.row - other.row) < 2 && Mathf.Abs(landmine.column - other.column) < 2) {
+				if (Mathf.Abs(currentLandmine.row - other.row) < 2 && Mathf.Abs(currentLandmine.column - other.column) < 2) {
 					number++;
 				}
 			}

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using L7;
+using UI;
 
 namespace Game {
 	public class Player : SingletonForMonoInstantiateOnAwake<Player> {
@@ -11,8 +12,8 @@ namespace Game {
 
 		private float minHeight = 0.05f;
 
-		private float positionX;
-		private float positionZ;
+		private int positionX;
+		private int positionZ;
 
 		void Update() {
 			if (!isAlive) {
@@ -20,25 +21,35 @@ namespace Game {
 			}
 			isGrounded = transform.position.y < minHeight;
 			if (isGrounded) {
-				CheckLandmine();
-			}
-		}
-
-		void CheckLandmine() {
-			if (LandmineManager.Instance.ExistLandmine(transform.position.x, transform.position.z)) {
-				Debug.LogError("Die");
-				isAlive = false;
+				CheckPosition();
 			}
 		}
 
 		void CheckPosition() {
-			if (transform.position.x == positionX && transform.position.z == positionZ) {
-
+			var currentPositionX = Mathf.FloorToInt(transform.position.x);
+			var currentPositionZ = Mathf.FloorToInt(transform.position.z);
+			if (currentPositionX == positionX && currentPositionZ == positionZ) {
+				return;
 			}
+			positionX = currentPositionX;
+			positionZ = currentPositionZ;
+			OnMoveToOtherSquare();
 		}
 
 		void OnMoveToOtherSquare() {
+			CheckLandmine();
+		}
 
+		void CheckLandmine() {
+			if (LandmineManager.Instance.ExistLandmine(transform.position.x, transform.position.z)) {
+				isAlive = false;
+				UIManager.Instance.uiMain.LinemineCountAround.text = LandmineManager.Instance.GetLandmineAroundCount().ToString();
+			}
+		}
+
+		void Die() {
+			Debug.LogError("Die");
+			Instantiate(GameManager.Instance.boomEffect, transform.position, Quaternion.identity);
 		}
 
 	}

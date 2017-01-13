@@ -10,9 +10,5 @@ namespace UI
 	{
 		public UI_Main uiMain;
 
-		private List<IViewer> uiViews;
-
-		
-
 	}
 }

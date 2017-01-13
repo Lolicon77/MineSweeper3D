@@ -44,7 +44,9 @@ namespace Game {
 
 
 		void CreateWalls() {
-
+//			Vector3[] verts = {
+//
+//			};
 		}
 
 		void InitLandMine() {
